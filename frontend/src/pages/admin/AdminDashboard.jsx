@@ -5,7 +5,7 @@ import DashboardHeader from '../../components/admin/DashboardHeader';
 import JobSearchFilters from '../../components/admin/JobSearchFilters';
 import JobListTable from '../../components/admin/JobListTable';
 import JobFormModal from '../../components/admin/JobFormModal';
-import ApplicantsPanel from '../../components/admin/ApplicantsPanel';
+import ApplicantsModal from '../../components/admin/ApplicantsModal';
 
 const AdminDashboard = () => {
   const [jobs, setJobs] = useState([]);
@@ -164,17 +164,16 @@ const AdminDashboard = () => {
         saving={saving}
       />
 
-      {applicantsJob && (
-        <ApplicantsPanel
-          job={applicantsJob}
-          applicants={applicants}
-          loading={applicantsLoading}
-          onClose={() => {
-            setApplicantsJob(null);
-            setApplicants([]);
-          }}
-        />
-      )}
+      <ApplicantsModal
+        show={!!applicantsJob}
+        job={applicantsJob}
+        applicants={applicants}
+        loading={applicantsLoading}
+        onClose={() => {
+          setApplicantsJob(null);
+          setApplicants([]);
+        }}
+      />
     </section>
   );
 };

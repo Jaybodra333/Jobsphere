@@ -91,22 +91,25 @@ const Home = () => {
             </label>
           </div>
           <div className="filter-actions">
-            <button className="btn btn-secondary" type="button" onClick={handleClear}>
-              Reset
-            </button>
-            <button className="btn btn-primary" type="submit" disabled={loading}>
-              {loading ? (
-                <>
-                  <div className="loading-spinner"></div>
-                  <span>Searching...</span>
-                </>
-              ) : (
-                <>
-                  <span>🔍</span>
-                  <span>Search</span>
-                </>
-              )}
-            </button>
+            {/* <label className="filter-actions-label">Actions</label> */}
+            <div className="filter-buttons" style={{ justifyContent: 'flex-end' , padding: 22 }  }>
+              <button className="btn btn-secondary" type="button" onClick={handleClear}>
+                Reset
+              </button>
+              <button className="btn btn-primary" type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <div className="loading-spinner"></div>
+                    <span>Searching...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>🔍</span>
+                    <span>Search</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -1,4 +1,4 @@
-# MERN Job Portal
+# MERN Job (JobSphere)
 
 A full-stack job board built with MongoDB, Express, React, and Node.js featuring public job browsing and an admin dashboard for managing listings and reviewing applicants.
 

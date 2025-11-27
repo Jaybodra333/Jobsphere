@@ -280,9 +280,25 @@ textarea::placeholder {
 
 .filter-actions {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-actions-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0;
+  min-height: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.filter-buttons {
+  display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .job-grid {
@@ -571,19 +587,25 @@ textarea::placeholder {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  max-height: calc(85vh - 200px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
 .applicant-list li {
-  border-bottom: 1px solid var(--border);
-  padding: 1.25rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
   border-radius: var(--radius);
   background: var(--bg-secondary);
   transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .applicant-list li:hover {
   background: var(--bg-tertiary);
-  transform: translateX(4px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary-light);
 }
 
 .applicant-list li strong {
@@ -889,6 +911,27 @@ textarea::placeholder {
   margin: -2rem -2rem 1.5rem -2rem;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   border-bottom: 2px solid var(--border);
+}
+
+.applicants-modal .modal-content {
+  max-width: 900px;
+  max-height: 85vh;
+}
+
+.applicants-modal .applicants-panel {
+  margin: 0;
+  box-shadow: none;
+  border: none;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.applicants-modal .applicants-panel .panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  backdrop-filter: blur(10px);
 }
 
 /* Modal Styles */

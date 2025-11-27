@@ -16,7 +16,7 @@ const Header = () => {
         <span role="img" aria-label="briefcase">
           💼
         </span>
-        Job Portal
+        JobSphere
       </div>
       <nav>
         <Link to="/">Jobs</Link>

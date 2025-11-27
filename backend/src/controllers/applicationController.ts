@@ -34,7 +34,7 @@ export const submitApplication = async (req: Request, res: Response) => {
         <p>Hi ${name},</p>
         <p>Thanks for applying to <strong>${job.title}</strong> at ${job.location}.</p>
         <p>We received your resume (${resumeUrl}) and will follow up soon.</p>
-        <p>- Job Portal Team</p>
+        <p>- JobSphere Team</p>
         <p><a href="${env.clientUrl}">Back to jobs</a></p>
       `,
     });

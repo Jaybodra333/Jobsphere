@@ -10,7 +10,7 @@ const ApplicantsPanel = ({ job, applicants, loading, onClose }) => {
             📍 {job.location} • {applicants.length} {applicants.length === 1 ? 'applicant' : 'applicants'}
           </p>
         </div>
-        <button className="btn btn-secondary" onClick={onClose}>
+        <button className="btn btn-secondary" onClick={onClose} type="button">
           <span>✕</span>
           <span>Close</span>
         </button>
