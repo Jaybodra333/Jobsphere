@@ -13,7 +13,8 @@ const JobSearchFilters = ({
 
   return (
     <div className="admin-search-section">
-      <div className="search-bar">
+      <div className="admin-search-row">
+        <div className="search-bar">
         <span className="search-icon">🔍</span>
         <input
           type="text"
@@ -31,9 +32,9 @@ const JobSearchFilters = ({
             ✕
           </button>
         )}
-      </div>
+        </div>
 
-      <div className="filter-group">
+        <div className="filter-group">
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
@@ -64,6 +65,7 @@ const JobSearchFilters = ({
             <span>Clear Filters</span>
           </button>
         )}
+        </div>
       </div>
 
       {hasActiveFilters && (

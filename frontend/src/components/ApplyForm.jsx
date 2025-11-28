@@ -53,7 +53,7 @@ const ApplyForm = ({ jobId }) => {
         />
       </label>
       <label>
-        Resume URL
+        CV/Resume URL
         <input
           name="resumeUrl"
           value={form.resumeUrl}

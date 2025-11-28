@@ -33,7 +33,7 @@ const ApplicantsPanel = ({ job, applicants, loading, onClose }) => {
               </div>
               <div style={{ marginBottom: '0.75rem' }}>
                 <a href={app.resumeUrl} target="_blank" rel="noreferrer">
-                  📄 View resume →
+                  📄 View CV/Resume →
                 </a>
               </div>
               {app.coverLetter && (

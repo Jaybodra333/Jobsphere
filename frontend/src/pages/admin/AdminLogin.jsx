@@ -9,6 +9,8 @@ const AdminLogin = () => {
   const [form, setForm] = useState({ email: '', password: '' });
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [remember, setRemember] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,6 +21,13 @@ const AdminLogin = () => {
     event.preventDefault();
     setSubmitting(true);
     setLocalError('');
+    // Basic client-side validation
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(form.email)) {
+      setLocalError('Please enter a valid email address');
+      setSubmitting(false);
+      return;
+    }
     try {
       await login(form.email, form.password);
       const redirectTo = location.state?.from?.pathname || '/admin';
@@ -31,9 +40,16 @@ const AdminLogin = () => {
   };
 
   return (
-    <section className="page-center">
-      <form className="panel auth-form" onSubmit={handleSubmit}>
-        <h2>Admin Login</h2>
+    <section className="page-center admin-login-page">
+      <form className="panel auth-form" onSubmit={handleSubmit} aria-label="Admin login form">
+        <div className="auth-brand">
+          <div className="auth-logo" aria-hidden>🌿</div>
+          <div>
+            <h2>Admin Portal</h2>
+            <p className="auth-subtitle">Manage jobs, applicants </p>
+          </div>
+        </div>
+
         <label>
           Email
           <input
@@ -42,34 +58,58 @@ const AdminLogin = () => {
             value={form.email}
             onChange={handleChange}
             required
+            autoComplete="username"
+            inputMode="email"
           />
         </label>
+
         <label>
           Password
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-row">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+              autoComplete="current-password"
+            />
+            <button
+              type="button"
+              className="btn-link show-pass"
+              onClick={() => setShowPassword((s) => !s)}
+              aria-pressed={showPassword}
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </button>
+          </div>
         </label>
+
+        
+
         {(localError || error) && (
           <p className="alert error">{localError || error}</p>
         )}
-        <button type="submit" className="btn btn-primary" disabled={submitting}>
-          {submitting ? (
-            <>
-              <div className="loading-spinner"></div>
-              <span>Signing in...</span>
-            </>
-          ) : (
-            <>
-              <span>🔐</span>
-              <span>Login</span>
-            </>
-          )}
-        </button>
+
+        <div className="auth-actions">
+          <button type="submit" className="btn btn-primary" disabled={submitting}>
+            {submitting ? (
+              <>
+                <div className="loading-spinner"></div>
+                <span>Signing in...</span>
+              </>
+            ) : (
+              <>
+                <span>🔐</span>
+                <span>Sign in</span>
+              </>
+            )}
+          </button>
+        </div>
+
+        <div className="auth-footer">
+          <small>Only authorized admins may access this area.</small>
+        </div>
       </form>
     </section>
   );
